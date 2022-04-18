@@ -6,16 +6,16 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
+  title: 'Archive',
+  tagline: '웹 개발자 Kidow의 코드 보관소',
+  url: 'https://archive.kidow.me',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
-
+  organizationName: 'kidow', // Usually your GitHub org/user name.
+  projectName: 'archive', // Usually your repo name.
+  plugins: ['docusaurus-tailwindcss'],
   presets: [
     [
       'classic',
@@ -44,9 +44,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: 'Kidow',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Archive Logo',
           src: 'img/logo.svg'
         },
         items: [
@@ -54,11 +54,10 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial'
+            label: 'Archive'
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/kidow/archive',
             label: 'GitHub',
             position: 'right'
           }
@@ -77,7 +76,7 @@ const config = {
             ]
           },
           {
-            title: 'Community',
+            title: 'Projects',
             items: [
               {
                 label: 'Stack Overflow',
@@ -102,12 +101,12 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus'
+                href: 'https://blog.kidow.me'
               }
             ]
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`
+        copyright: `Copyright © ${new Date().getFullYear()} Archive. Built with Kidow.`
       },
       prism: {
         theme: lightCodeTheme,
