@@ -2,13 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-}
-
 @layer base {
-  svg {
-    @apply inline-block;
-  }
   a {
     @apply hover:text-primary;
   }

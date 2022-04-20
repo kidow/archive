@@ -11,10 +11,10 @@ export default function Home(): JSX.Element {
           <img src="/img/main.png" alt="" className="w-1/2" />
         </div>
         <div className="container mx-auto">
-          <div>
-            <Logo className="h-10" />
+          <div className="flex justify-center">
+            <Logo className="h-8 sm:h-10" />
           </div>
-          <h1 className="mt-4 text-2xl mb-7">
+          <h1 className="mt-4 text-lg mb-7 sm:text-2xl">
             웹 프론트엔드 개발자 Kidow의 코드 보관소입니다.
           </h1>
           <div>
