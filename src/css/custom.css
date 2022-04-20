@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  a {
-    @apply hover:text-primary;
-  }
+:root {
+  --ifm-color-primary: #25c19f;
 }
 
 html[data-theme='dark'] #kidow-archive {
