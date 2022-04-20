@@ -1,29 +1,32 @@
 import React from 'react'
 import Layout from '@theme/Layout'
 import Link from '@docusaurus/Link'
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import Logo from '@site/src/components/Logo'
 
 export default function Home(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext()
   return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
-    >
-      <header className="bg-primary">
+    <Layout description="웹 프론트엔드 개발자 Kidow의 코드 보관소입니다.">
+      <main className="pb-20 text-center">
+        <div className="flex justify-center py-10">
+          <img src="/img/main.png" alt="" className="w-1/2" />
+        </div>
         <div className="container mx-auto">
-          <h1 className="hero__title">{siteConfig.title}</h1>
-          <p className="text-2xl hero__subtitle">{siteConfig.tagline}</p>
-          <div className="">
+          <div>
+            <Logo className="h-10" />
+          </div>
+          <h1 className="mt-4 text-2xl mb-7">
+            웹 프론트엔드 개발자 Kidow의 코드 보관소입니다.
+          </h1>
+          <div>
             <Link
-              className="button button--secondary button--lg"
+              className="px-6 py-3 text-lg font-semibold text-black bg-white rounded"
               to="/docs/intro"
             >
               둘러보기
             </Link>
           </div>
         </div>
-      </header>
+      </main>
     </Layout>
   )
 }

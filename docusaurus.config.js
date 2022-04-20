@@ -6,8 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Archive',
-  tagline: '웹 개발자 Kidow의 코드 보관소',
+  title: 'Kidow Archive',
   url: 'https://archive.kidow.me',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -44,9 +43,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Kidow',
+        title: '',
         logo: {
-          alt: 'Archive Logo',
+          alt: 'Logo',
           src: 'img/logo.svg'
         },
         items: [
@@ -67,10 +66,26 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Archive',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Components',
+                to: '/docs/intro'
+              },
+              {
+                label: 'Hooks',
+                to: '/docs/intro'
+              },
+              {
+                label: 'Utils',
+                to: '/docs/intro'
+              },
+              {
+                label: 'Projects',
+                to: '/docs/intro'
+              },
+              {
+                label: 'Settings',
                 to: '/docs/intro'
               }
             ]
@@ -79,16 +94,36 @@ const config = {
             title: 'Projects',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus'
+                label: 'Statistics',
+                href: 'https://kidow.me'
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus'
+                label: 'Blog',
+                href: 'https://blog.kidow.me'
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus'
+                label: 'Resume',
+                href: 'https://resume.kidow.me'
+              },
+              {
+                label: 'Memo',
+                href: 'https://memo.kidow.me'
+              },
+              {
+                label: 'Admin',
+                href: 'https://admin.kidow.me'
+              },
+              {
+                label: 'Components',
+                href: 'https://components.kidow.me'
+              },
+              {
+                label: 'Archive',
+                href: 'https://archive.kidow.me'
+              },
+              {
+                label: 'Portal',
+                href: 'https://portal.kidow.me'
               }
             ]
           },
@@ -97,11 +132,11 @@ const config = {
             items: [
               {
                 label: 'Blog',
-                to: '/blog'
+                href: 'https://blog.kidow.me'
               },
               {
                 label: 'GitHub',
-                href: 'https://blog.kidow.me'
+                href: 'https://github.com/kidow'
               }
             ]
           }

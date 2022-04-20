@@ -2,8 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+}
+
 @layer base {
   svg {
     @apply inline-block;
   }
+  a {
+    @apply hover:text-primary;
+  }
+}
+
+html[data-theme='dark'] #kidow-archive {
+  fill: #fff;
+}
+html[data-theme='light'] #kidow-archive {
+  fill: #000;
 }
