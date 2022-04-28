@@ -4,17 +4,25 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github')
 const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
+const title = 'Archive - Kidow'
+const description = '웹 개발자 Kidow의 코드 보관소입니다.'
+const image = 'https://opengraph.kidow.me/api?id=tcxxhfzaa19'
+const url = 'https://archive.kidow.me'
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Kidow Archive',
-  url: 'https://archive.kidow.me',
+  title,
+  url,
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'kidow', // Usually your GitHub org/user name.
   projectName: 'archive', // Usually your repo name.
-  plugins: ['docusaurus-tailwindcss'],
+  plugins: [
+    'docusaurus-tailwindcss',
+    [require.resolve('docusaurus-gtm-plugin'), { id: 'GTM-TFHQLMX' }]
+  ],
   presets: [
     [
       'classic',
@@ -124,6 +132,10 @@ const config = {
               {
                 label: 'Portal',
                 href: 'https://portal.kidow.me'
+              },
+              {
+                label: 'Status',
+                href: 'https://status.kidow.me'
               }
             ]
           },
@@ -149,7 +161,48 @@ const config = {
       },
       colorMode: {
         defaultMode: 'dark'
-      }
+      },
+      metadata: [
+        { name: 'robots', content: 'index, follow' },
+        {
+          name: 'keywords',
+          content:
+            'docusaurus, code-archive, javascript, react, tailwindcss, typescript, vercel'
+        },
+        { name: 'author', content: '김동욱' },
+        { name: 'theme-color', content: '#25C19F' },
+
+        {
+          name: 'google-site-verification',
+          content: 'U7XAUSLj4fvIltyYzYb9tzcOis4tnpM570JZSvSyrFg'
+        },
+        {
+          name: 'naver-site-verification',
+          content: 'a1d88c86801e2d91cdbdbcd4f784d39897cd2c2b'
+        },
+
+        { name: 'og:title', content: title },
+        {
+          name: 'og:description',
+          content: description
+        },
+        { name: 'og:url', content: 'https://archive.kidow.me' },
+        {
+          name: 'og:image',
+          content: image
+        },
+        { name: 'og:image:width', content: '1200' },
+        { name: 'og:image:height', content: '600' },
+        { name: 'og:locale', content: 'ko_KR' },
+        { name: 'og:type', content: 'website' },
+        { name: 'og:site_name', content: "Web developer Kidow's Code Archive" },
+
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:image', content: image },
+        { name: 'twitter:domain', content: url },
+        { name: 'twitter:card', content: 'summary_large_image' }
+      ]
     })
 }
 
