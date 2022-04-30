@@ -12,3 +12,18 @@ html[data-theme='dark'] #kidow-archive {
 html[data-theme='light'] #kidow-archive {
   fill: #000;
 }
+
+@layer components {
+  .required {
+    @apply select-none text-red-500;
+  }
+  .react-table-row-group > div {
+    @apply table-row overflow-x-auto text-sm text-gray-500 hover:bg-blue-50;
+  }
+  .react-table-row-group > div > div {
+    @apply table-cell px-6 py-4 align-top;
+  }
+  .masonry > * {
+    @apply mb-2 w-full;
+  }
+}

@@ -84,7 +84,7 @@ const config = {
               },
               {
                 label: 'Settings',
-                to: '/docs/settings/chrome-extensions'
+                to: '/docs/settings/Chrome Extensions'
               }
             ]
           },
