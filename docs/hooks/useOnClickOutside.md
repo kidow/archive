@@ -35,7 +35,7 @@ export function useOnClickOutside<T extends HTMLElement>(
 import { useRef, useMemo } from 'react'
 import type { FC } from 'react'
 import { Portal } from 'components'
-import { useObjectState, useOnClickOutside, getRandomString } from 'services'
+import { useObjectState, useOnClickOutside, randomString } from 'services'
 
 interface Props {
   list: string[]
@@ -52,7 +52,7 @@ const Dropdown: FC<Props> = ({ label = 'Dropdown', list, onClick }) => {
   })
   const ref = useRef<HTMLButtonElement>(null)
   const targetRef = useRef<HTMLUListElement>(null)
-  const elementId = useMemo(() => getRandomString(), [])
+  const elementId = useMemo(() => randomString(), [])
 
   // highlight-start
   useOnClickOutside(targetRef, () => setState({ isOpen: false }), elementId)

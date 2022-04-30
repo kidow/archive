@@ -1,0 +1,40 @@
+import { Required } from '@site/src/components'
+
+## Code
+
+```tsx title="components/Checkbox/index.tsx"
+import type { FC, ReactNode } from 'react'
+import classnames from 'classnames'
+
+export interface Props {
+  checked: boolean
+  onChange: (checked: boolean) => void
+  label: ReactNode
+  className?: string
+}
+
+const Checkbox: FC<Props> = ({ checked, onChange, label, className }) => {
+  return (
+    <label className="mb-0 cursor-pointer">
+      <input
+        onChange={(e) => onChange(e.target.checked)}
+        type="checkbox"
+        checked={checked}
+      />
+      <span className={classnames('ml-1.5 text-sm text-gray-600', className)}>
+        {label}
+      </span>
+    </label>
+  )
+}
+
+export default Checkbox
+```
+
+## Props
+
+| Name                | Type     | Default |
+| ------------------- | -------- | ------- |
+| checked<Required/>  | boolean  |         |
+| onChange<Required/> | function |         |
+| label<Required/>    | string   |         |

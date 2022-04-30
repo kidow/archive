@@ -1,1 +1,56 @@
 Storybook [link](https://components.kidow.me)
+
+import { Required } from '@site/src/components'
+
+## Prerequisite
+
+- [`Input`](/docs/components/Input) component
+- [`randomString`](/docs/utils/randomString) util
+
+```css title="root css"
+/* datalist 고유의 picker icon 삭제 */
+input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+```
+
+## Code
+
+```tsx title="components/Autocomplete/index.tsx"
+import { useMemo } from 'react'
+import type { FC, OptionHTMLAttributes, ComponentProps } from 'react'
+import { Input } from 'components'
+import { randomString } from 'services'
+
+interface Props extends ComponentProps<typeof Input> {
+  options: Array<OptionHTMLAttributes<HTMLOptionElement>['value']>
+  id?: string
+}
+
+const Autocomplete: FC<Props> = ({ options, ...props }) => {
+  const id = useMemo(() => randomString(), [])
+  return (
+    <>
+      <Input {...props} list={props.id || id} />
+      <datalist id={props.id || id}>
+        {options.map((value, key) => (
+          <option value={value} key={key} />
+        ))}
+      </datalist>
+    </>
+  )
+}
+
+export default Autocomplete
+```
+
+## Props
+
+| Name                | Type             | Default |
+| ------------------- | ---------------- | ------- |
+| options<Required /> | array of strings |         |
+| id                  | string           |         |
+
+## References
+
+[https://developer.mozilla.org/ko/docs/Web/HTML/Element/datalist](https://developer.mozilla.org/ko/docs/Web/HTML/Element/datalist)

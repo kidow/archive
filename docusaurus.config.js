@@ -36,6 +36,9 @@ const config = {
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }]
           ]
+        },
+        theme: {
+          customCss: require.resolve('./src/css/custom.css')
         }
       })
     ]
