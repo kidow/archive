@@ -32,16 +32,10 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/'
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/'
-        },
-        theme: {
-          customCss: require.resolve('./src/css/custom.css')
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          remarkPlugins: [
+            [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }]
+          ]
         }
       })
     ]
@@ -78,23 +72,19 @@ const config = {
             items: [
               {
                 label: 'Components',
-                to: '/docs/intro'
+                to: '/docs/components/Alert'
               },
               {
                 label: 'Hooks',
-                to: '/docs/intro'
+                to: '/docs/hooks/useComponentDidUpdate'
               },
               {
                 label: 'Utils',
-                to: '/docs/intro'
-              },
-              {
-                label: 'Projects',
-                to: '/docs/intro'
+                to: '/docs/utils/base64ToFile'
               },
               {
                 label: 'Settings',
-                to: '/docs/intro'
+                to: '/docs/settings/chrome-extensions'
               }
             ]
           },
@@ -102,36 +92,48 @@ const config = {
             title: 'Projects',
             items: [
               {
-                label: 'Statistics',
+                label: 'Analytics',
                 href: 'https://kidow.me'
-              },
-              {
-                label: 'Blog',
-                href: 'https://blog.kidow.me'
-              },
-              {
-                label: 'Resume',
-                href: 'https://resume.kidow.me'
-              },
-              {
-                label: 'Memo',
-                href: 'https://memo.kidow.me'
               },
               {
                 label: 'Admin',
                 href: 'https://admin.kidow.me'
               },
               {
-                label: 'Components',
-                href: 'https://components.kidow.me'
-              },
-              {
                 label: 'Archive',
                 href: 'https://archive.kidow.me'
               },
               {
+                label: 'Blog',
+                href: 'https://blog.kidow.me'
+              },
+              {
+                label: 'Components',
+                href: 'https://components.kidow.me'
+              },
+              {
+                label: 'Log',
+                href: 'https://log.kidow.me'
+              },
+              {
+                label: 'Memo',
+                href: 'https://memo.kidow.me'
+              },
+              {
+                label: 'Menu',
+                href: 'https://menu.kidow.me'
+              },
+              {
+                label: 'Opengraph',
+                href: 'https://opengraph.kidow.me'
+              },
+              {
                 label: 'Portal',
                 href: 'https://portal.kidow.me'
+              },
+              {
+                label: 'Resume',
+                href: 'https://resume.kidow.me'
               },
               {
                 label: 'Status',

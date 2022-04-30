@@ -8,7 +8,7 @@ export const enumToOptions = (enumObj: any) =>
 ## 예시
 
 ```tsx title="pages/index.tsx"
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 import { enumToOptions } from 'services'
 
 enum ProgrammingLanguage {
