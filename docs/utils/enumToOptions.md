@@ -18,7 +18,7 @@ enum ProgrammingLanguage {
   'Node.js' = '노드js'
 }
 
-const Home = () => {
+const Page = () => {
   return (
     <div>
       {/* Select */}
@@ -33,15 +33,9 @@ const Home = () => {
 
       {/* Radio */}
       {enumToOptions(ProgrammingLanguage).map((option, key) => (
-        <Fragment key={key}>
-          <input
-            type="radio"
-            id={option.name + key}
-            name={option.name}
-            value={option.value}
-          />
-          <label for={option.name + key}>{option.name}</label>
-        </Fragment>
+        <label key={key}>
+          <input type="radio" name={option.name} value={option.value} />
+        </label>
       ))}
     </div>
   )
