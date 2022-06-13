@@ -1,33 +1,16 @@
 Storybook [link](https://components.kidow.me/?path=/story/layout--masonry)
 
-## Prerequisite
-
-:::note 주의
-아직 tailwindcss에는 자식 선택자에 대한 기능이 없기 때문에, 직접 css로 컴포넌트를 만드는 방법이 필요합니다.
-:::
-
-```css title="tailwind css file"
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-  .masonry {
-    @apply inline-block columns-2 break-inside-avoid gap-2 sm:columns-3 md:columns-4 lg:columns-4 xl:columns-6 2xl:columns-7;
-  }
-  .masonry > * {
-    @apply mb-2 w-full;
-  }
-}
-```
-
 ## Code
 
 ```tsx title="components/Masonry/index.tsx"
 import type { FC } from 'react'
 
 const Masonry = ({ children }) => {
-  return <div class="masonry">{children}</div>
+  return (
+    <div class="[&>*]:mb-2 [&>*]:w-full inline-block columns-2 break-inside-avoid gap-2 sm:columns-3 md:columns-4 lg:columns-4 xl:columns-6 2xl:columns-7">
+      {children}
+    </div>
+  )
 }
 
 export default Masonry

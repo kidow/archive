@@ -2,6 +2,12 @@ import { Required } from '@site/src/components'
 
 Storybook [link](https://components.kidow.me/?path=/story/inputs--input)
 
+## Prerequisite
+
+```bash npm2yarn
+npm install classnames
+```
+
 ## Code
 
 ```tsx title="components/Input/index.tsx"
@@ -147,11 +153,11 @@ export default Input
 
 | Name        | Type                | Default |
 | ----------- | ------------------- | ------- |
-| size        | `xs` `sm` `md` `lg` |         |
+| size        | `xs` `sm` `md` `lg` | `md`    |
 | onEnter     | function            |         |
 | prefix      | node                |         |
 | suffix      | node                |         |
-| align       | `left` `right`      |         |
+| align       | `left` `right`      | `left`  |
 | error       | node                |         |
 | fullWidth   | boolean             |         |
 | info        | node                |         |
