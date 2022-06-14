@@ -4,6 +4,8 @@ Storybook [link](https://components.kidow.me/?path=/story/inputs--input)
 
 ## Prerequisite
 
+- [`randomString`](/docs/utils/randomString) util
+
 ```bash npm2yarn
 npm install classnames
 ```
@@ -35,6 +37,8 @@ export interface Props
   error?: ReactNode
   fullWidth?: boolean
   info?: ReactNode
+  placeholder?: string
+  float?: boolean
 }
 
 const Input: FC<Props> = ({
@@ -47,6 +51,7 @@ const Input: FC<Props> = ({
   error,
   fullWidth = false,
   info,
+  float = true,
   ...props
 }) => {
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -82,10 +87,10 @@ const Input: FC<Props> = ({
           {...props}
           id={props.id || elementId}
           className={classnames(
-            'bg-white',
+            'bg-white focus:outline-none',
             isBaseWord
-              ? 'mx-1 w-full flex-1 border-0 focus:outline-none'
-              : 'block',
+              ? 'mx-1 w-full flex-1 border-0'
+              : 'border-gray-500border block border border-gray-500',
             {
               'rounded-sm text-xs': size === 'xs',
               'p-1': !isBaseWord && size === 'xs',
@@ -97,8 +102,9 @@ const Input: FC<Props> = ({
               'px-4': !isBaseWord && size === 'lg',
               'text-right': align === 'right',
               'w-full': fullWidth,
-              peer: !!props.placeholder,
-              'placeholder-transparent': !!props.placeholder || !!prefix
+              peer: !!props.placeholder && float,
+              'placeholder-transparent':
+                (!!props.placeholder || !!prefix) && float
             },
             !!error
               ? 'border-red-500'
@@ -108,11 +114,11 @@ const Input: FC<Props> = ({
           onKeyDown={onKeyDown}
           spellCheck={false}
         />
-        {!!props.placeholder && (
+        {!!props.placeholder && float && (
           <label
             htmlFor={props.id || elementId}
             className={classnames(
-              'absolute -top-6 max-w-[calc(100%-24px)] cursor-text select-none truncate text-gray-600 transition-all peer-placeholder-shown:text-gray-400 peer-focus:left-0 peer-focus:max-w-full peer-focus:cursor-default peer-focus:text-gray-600',
+              'absolute -top-6 left-0 max-w-[calc(100%-24px)] cursor-text select-none truncate text-gray-600 transition-all peer-placeholder-shown:text-gray-400 peer-empty:left-3 peer-focus:left-0 peer-focus:max-w-full peer-focus:cursor-default peer-focus:text-gray-600',
               !!props.value ? 'left-0' : 'left-3',
               {
                 'text-xs peer-placeholder-shown:left-1 peer-placeholder-shown:top-1.5 peer-placeholder-shown:text-xs peer-focus:-top-5 peer-focus:text-xs':
@@ -134,16 +140,20 @@ const Input: FC<Props> = ({
       </div>
       {(!!error || !!info) && (
         <div
-          className={classnames('mt-1 text-xs', {
-            'text-red-500': !!error,
-            'text-gray-400': !!info
-          })}
+          className={classnames(
+            'mt-1 text-xs',
+            !!error ? 'text-red-500' : !!info ? 'text-gray-400' : undefined
+          )}
         >
           {error || info}
         </div>
       )}
     </div>
   )
+}
+
+Input.defaultProps = {
+  type: 'text'
 }
 
 export default Input
@@ -166,3 +176,4 @@ export default Input
 | disabled    | boolean             |         |
 | value       | string              |         |
 | placeholder | string              |         |
+| float       | boolean             | `true`  |
