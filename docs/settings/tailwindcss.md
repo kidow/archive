@@ -15,7 +15,7 @@ id: TailwindCSS
   input,
   select,
   textarea {
-    @apply border border-gray-500;
+    @apply border border-neutral-500;
   }
   button {
     @apply outline-none hover:brightness-105 focus:outline-none active:brightness-95;
@@ -23,9 +23,6 @@ id: TailwindCSS
 }
 
 @layer components {
-  .break-keep {
-    word-break: keep-all;
-  }
   .required {
     @apply after:text-red-500 after:content-['*'];
   }
@@ -33,15 +30,15 @@ id: TailwindCSS
 ```
 
 ```bash npm2yarn
-npm install @types/tailwindcss prettier-plugin-tailwindcss --dev
+npm install prettier-plugin-tailwindcss --dev
 ```
 
 ```javascript title="tailwind.config.js"
 const plugin = require('tailwindcss/plugin')
 
-/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
+/** @type {import("tailwindcss").Config } */
 module.exports = {
-  ...{},
+  ...,
   plugins: [
     require('prettier-plugin-tailwindcss'),
     plugin(function ({ addComponents }) {

@@ -49,6 +49,21 @@ id: Code Snippets
     "prefix": "exp",
     "body": ["export { default as $1 } from './$1'"],
     "description": "export default as from"
+  },
+  "next page generator": {
+    "prefix": "nextpage",
+    "body": [
+      "import type { NextPage } from 'next'",
+      "",
+      "interface State {}",
+      "",
+      "const $1Page: NextPage = () => {",
+      " return <>$1Page</>",
+      "}",
+      "",
+      "export default $1Page"
+    ],
+    "description": "next page generator"
   }
 }
 ```
