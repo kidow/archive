@@ -5,33 +5,52 @@ Storybook [link](https://components.kidow.me/?path=/story/feedback--backdrop)
 ## Prerequisite
 
 - [`Spinner`](/docs/components/Spinner) component
-- [`Portal`](/docs/components/Portal) component
+- [`EventListener`](/docs/event) event
 
 ## Code
 
 ```tsx title="components/Backdrop/index.tsx"
-import { useEffect } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import type { FC } from 'react'
-import { Spinner, Portal } from 'components'
+import { Spinner } from 'components'
+import { createPortal } from 'react-dom'
+import { EventListener } from 'services'
 
-interface Props {}
+const Backdrop: FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
 
-const Backdrop: FC<Props> = () => {
+  const onBackdrop = useCallback(
+    ({ detail }: any) => {
+      setIsOpen(detail.open)
+      if (detail.open) document.body.style.overflow = 'hidden'
+      else document.body.removeAttribute('style')
+    },
+    [isOpen]
+  )
+
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.body.removeAttribute('style')
-    }
+    EventListener.add('backdrop', onBackdrop)
+    return () => EventListener.remove('backdrop', onBackdrop)
   }, [])
-  return (
-    <Portal role="progressbar">
+  if (!isOpen) return null
+  return createPortal(
+    <div role="progressbar">
       <div className="fixed inset-0 cursor-progress bg-black opacity-30" />
       <span className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-progress">
         <Spinner className="h-10 w-10" />
       </span>
-    </Portal>
+    </div>,
+    document.body
   )
 }
 
 export default Backdrop
+```
+
+## Usage
+
+```typescript
+<button onClick={() => EventListener.emit('backdrop', { open: true })}>
+  Backdrop
+</button>
 ```
