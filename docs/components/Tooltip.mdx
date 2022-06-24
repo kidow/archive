@@ -5,7 +5,6 @@ Storybook [link](https://components.kidow.me/?path=/story/data-display--tooltip)
 ## Prerequisite
 
 - [`useObjectState`](/docs/hooks/useObjectState) hooks
-- [`Portal`](/docs/components/Portal) component
 
 ```bash npm2yarn
 npm install classnames
@@ -17,10 +16,10 @@ npm install classnames
 import { Children, cloneElement, useRef, useEffect, useMemo } from 'react'
 import type { ReactElement, MouseEvent, ReactNode, FC } from 'react'
 import classnames from 'classnames'
-import { useObjectState } from 'services'
-import { Portal } from 'components'
+import { throttle, useObjectState } from 'services'
+import { createPortal } from 'react-dom'
 
-interface Props {
+export interface Props {
   content: ReactNode
   position: 'top' | 'right' | 'bottom' | 'left'
   border?: boolean
@@ -40,14 +39,14 @@ interface State {
 }
 
 const Tooltip: FC<Props> = ({
-  children,
   content,
+  children,
+  border = false,
+  theme = 'light',
+  arrow = true,
   position,
-  border,
-  theme,
-  arrow,
-  padding,
-  animation,
+  padding = true,
+  animation = true,
   ...props
 }) => {
   const [
@@ -83,7 +82,7 @@ const Tooltip: FC<Props> = ({
   const trigger = cloneElement(child, {
     ...props,
     className: 'inline-block',
-    onMouseEnter: (e: MouseEvent) => {
+    onMouseOver: throttle((e: MouseEvent) => {
       const element = e.target as HTMLElement
       const { height, width, top, left } = element.getBoundingClientRect()
       setState({
@@ -93,8 +92,8 @@ const Tooltip: FC<Props> = ({
         triggerHeight: height,
         triggerWidth: width
       })
-    },
-    onMouseLeave: () => resetState()
+    }, 100),
+    onMouseOut: throttle(() => resetState(), 100)
   })
 
   const left: number = useMemo(() => {
@@ -128,30 +127,32 @@ const Tooltip: FC<Props> = ({
   return (
     <>
       {trigger}
-      {isOpen && (
-        <Portal>
+      {isOpen &&
+        createPortal(
           <div
+            role="tooltip"
             ref={tooltipRef}
             className={classnames(
               'fixed z-[9999] rounded',
               isPositioned ? 'visible' : 'invisible',
               {
                 'px-5 py-2': padding,
-                'after:absolute after:border-8 after:content-[""]': arrow,
-                'border border-gray-200': border,
+                'after:absolute after:z-10 after:border-8 after:content-[""]':
+                  arrow,
+                'border border-gray-400': border,
                 'before-content-[""] before:absolute before:border-[9px]':
                   arrow && border,
 
-                'bg-gray-100 text-gray-700': theme === 'light',
+                'bg-white text-gray-700': theme === 'light',
                 'bg-black text-white': theme === 'dark',
 
-                'after:border-t-gray-100':
+                'after:border-t-white':
                   arrow && theme === 'light' && position === 'top',
-                'after:border-b-gray-100':
+                'after:border-b-white':
                   arrow && theme === 'light' && position === 'bottom',
-                'after:border-l-gray-100':
+                'after:border-l-white':
                   arrow && theme === 'light' && position === 'left',
-                'after:border-r-gray-100':
+                'after:border-r-white':
                   arrow && theme === 'light' && position === 'right',
                 'after:border-t-black':
                   arrow && theme === 'dark' && position === 'top',
@@ -194,31 +195,30 @@ const Tooltip: FC<Props> = ({
                   border &&
                   (position === 'left' || position === 'right'),
 
-                'before:border-b-gray-200':
+                'before:border-b-gray-400':
                   arrow && border && theme === 'light' && position === 'bottom',
                 'before:border-b-black':
                   arrow && border && theme === 'dark' && position === 'bottom',
-                'before:border-t-gray-200':
+                'before:border-t-gray-400':
                   arrow && border && theme === 'light' && position === 'top',
                 'before:border-t-black':
                   arrow && border && theme === 'dark' && position === 'top',
-                'before:border-l-gray-200':
+                'before:border-l-gray-400':
                   arrow && border && theme === 'light' && position === 'left',
                 'before:border-l-black':
                   arrow && border && theme === 'dark' && position === 'left',
-                'before:border-r-gray-200':
+                'before:border-r-gray-400':
                   arrow && border && theme === 'light' && position === 'right',
                 'before:border-r-black':
                   arrow && border && theme === 'dark' && position === 'right'
               }
             )}
             style={{ left, top }}
-            role="tooltip"
           >
             {content}
-          </div>
-        </Portal>
-      )}
+          </div>,
+          document.body
+        )}
     </>
   )
 }

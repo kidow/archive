@@ -2,7 +2,6 @@ import { Required } from '@site/src/components'
 
 ## Prerequisite
 
-- [`Portal`](/docs/components/Portal) component
 - [`randomString`](/docs/utils/randomString) util
 - [`useObjectState`](/docs/hooks/useObjectState) hooks
 - [`useOnClickOutside`](/docs/hooks/useOnClickOutside) hooks
@@ -31,7 +30,7 @@ import {
   useOnClickOutside,
   twoDigitsNumber
 } from 'services'
-import { Portal } from 'components'
+import { createPortal } from 'react-dom'
 
 export interface Props {
   value: string
@@ -79,66 +78,70 @@ const MonthPicker: FC<Props> = ({ value, onChange }) => {
           <CalendarIcon className="h-5 w-5 text-gray-300 group-hover:text-gray-600" />
         </button>
       </div>
-      {isOpen && (
-        <Portal
-          role="presentation"
-          style={{
-            left: `${ref.current?.getBoundingClientRect().left || 0}px`,
-            top: `${
-              window.scrollY +
-              (ref.current?.getBoundingClientRect().top || 0) +
-              40
-            }px`,
-            position: 'absolute',
-            zIndex: '9999'
-          }}
-        >
+      {isOpen &&
+        createPortal(
           <div
-            ref={targetRef}
-            className="w-64 select-none rounded bg-white drop-shadow-xl"
+            role="presentation"
+            style={{
+              left: `${ref.current?.getBoundingClientRect().left || 0}px`,
+              top: `${
+                window.scrollY +
+                (ref.current?.getBoundingClientRect().top || 0) +
+                40
+              }px`,
+              position: 'absolute',
+              zIndex: '9999'
+            }}
           >
-            <div className="flex items-center justify-between border-b border-gray-300 px-2">
-              <button
-                className="py-3"
-                onClick={() => setState({ date: dayjs(date).add(-1, 'year') })}
-              >
-                <ChevronLeftIcon className="h-4 w-4 text-gray-400 hover:text-gray-800" />
-              </button>
-              <span className="font-semibold">
-                {dayjs(date).format('YYYY')}
-              </span>
-              <button
-                className="py-3"
-                onClick={() => setState({ date: dayjs(date).add(1, 'year') })}
-              >
-                <ChevronRightIcon className="h-4 w-4 text-gray-400 hover:text-gray-800" />
-              </button>
-            </div>
-            <div className="grid grid-cols-3 gap-4 px-2 py-4">
-              {Array.from({ length: 12 }).map((_, key) => (
-                <div
-                  key={key}
-                  className={classnames(
-                    'grid h-6 cursor-pointer place-items-center rounded text-sm',
-                    dayjs(value).format('YYYY-MM') ===
-                      dayjs(date).format(`YYYY-${twoDigitsNumber(key + 1)}`)
-                      ? 'bg-blue-500 text-white'
-                      : 'hover:bg-gray-200'
-                  )}
-                  onClick={() => {
-                    onChange(
-                      dayjs(date).format(`YYYY-${twoDigitsNumber(key + 1)}`)
-                    )
-                    setState({ isOpen: false })
-                  }}
+            <div
+              ref={targetRef}
+              className="w-64 select-none rounded bg-white drop-shadow-xl"
+            >
+              <div className="flex items-center justify-between border-b border-gray-300 px-2">
+                <button
+                  className="py-3"
+                  onClick={() =>
+                    setState({ date: dayjs(date).add(-1, 'year') })
+                  }
                 >
-                  {key + 1}월
-                </div>
-              ))}
+                  <ChevronLeftIcon className="h-4 w-4 text-gray-400 hover:text-gray-800" />
+                </button>
+                <span className="font-semibold">
+                  {dayjs(date).format('YYYY')}
+                </span>
+                <button
+                  className="py-3"
+                  onClick={() => setState({ date: dayjs(date).add(1, 'year') })}
+                >
+                  <ChevronRightIcon className="h-4 w-4 text-gray-400 hover:text-gray-800" />
+                </button>
+              </div>
+              <div className="grid grid-cols-3 gap-4 px-2 py-4">
+                {Array.from({ length: 12 }).map((_, key) => (
+                  <div
+                    key={key}
+                    className={classnames(
+                      'grid h-6 cursor-pointer place-items-center rounded text-sm',
+                      dayjs(value).format('YYYY-MM') ===
+                        dayjs(date).format(`YYYY-${twoDigitsNumber(key + 1)}`)
+                        ? 'bg-blue-500 text-white'
+                        : 'hover:bg-gray-200'
+                    )}
+                    onClick={() => {
+                      onChange(
+                        dayjs(date).format(`YYYY-${twoDigitsNumber(key + 1)}`)
+                      )
+                      setState({ isOpen: false })
+                    }}
+                  >
+                    {key + 1}월
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </Portal>
-      )}
+          </div>,
+          document.body
+        )}
     </>
   )
 }
