@@ -33,3 +33,7 @@ export function emit<T>(type: string, detail?: T) {
 ```typescript title="service/index.ts"
 export * as EventListener from './event'
 ```
+
+## References
+
+[https://www.falldowngoboone.com/blog/talk-to-your-react-components-with-custom-events/](https://www.falldowngoboone.com/blog/talk-to-your-react-components-with-custom-events/)
