@@ -88,10 +88,6 @@ const config = {
               {
                 label: 'Settings',
                 to: '/docs/settings/Chrome Extensions'
-              },
-              {
-                label: 'Event',
-                to: '/docs/event'
               }
             ]
           },
