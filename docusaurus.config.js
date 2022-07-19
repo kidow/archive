@@ -23,6 +23,14 @@ const config = {
     'docusaurus-tailwindcss',
     [require.resolve('docusaurus-gtm-plugin'), { id: 'GTM-TFHQLMX' }]
   ],
+  scripts: [
+    {
+      type: 'text/javascript',
+      async: true,
+      src: 'https://cdn.kidow.me/plugin.js',
+      origin: 'https://plugin.kidow.me'
+    }
+  ],
   presets: [
     [
       'classic',
