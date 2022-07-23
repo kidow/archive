@@ -2,10 +2,202 @@ import { Required } from '@site/src/components'
 
 Storybook [link](https://components.kidow.me/?path=/story/navigation--navigation)
 
+## Prerequisite
+
+```bash npm2yarn
+npm install classnames @heroicons/react
+```
+
 ## Code
 
 ```tsx title="components/Pagination/index.tsx"
+import type { FC } from 'react'
+import { usePagination } from 'services'
+import classnames from 'classnames'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
 
+export interface Props {
+  currentPage: number
+  totalCount: number
+  pageSize: number
+  onPageChange: (page: number) => void
+  siblingCount?: number
+}
+
+const Pagination: FC<Props> = ({
+  currentPage,
+  totalCount,
+  pageSize,
+  onPageChange,
+  siblingCount = 1
+}) => {
+  const paginationRange = usePagination({
+    currentPage,
+    totalCount,
+    siblingCount,
+    pageSize
+  })
+  if (currentPage === 0 || !paginationRange) return null
+
+  if (paginationRange.length < 2) {
+    return (
+      <ul className="inline-flex divide-x divide-gray-300 rounded-md border border-gray-300 bg-white text-sm font-medium">
+        <li className="inline-flex cursor-not-allowed items-center p-2 text-gray-300">
+          <ChevronLeftIcon className="h-5 w-5" />
+        </li>
+        <li className="inline-flex cursor-pointer items-center bg-blue-50 px-3 py-2">
+          1
+        </li>
+        <li className="inline-flex cursor-not-allowed items-center p-2 text-gray-300">
+          <ChevronRightIcon className="h-5 w-5" />
+        </li>
+      </ul>
+    )
+  }
+
+  return (
+    <ul className="inline-flex select-none divide-x divide-gray-300 rounded-md border border-gray-300 bg-white text-sm font-medium">
+      <li
+        className={classnames(
+          'inline-flex select-none items-center p-2',
+          currentPage === 1
+            ? 'cursor-not-allowed'
+            : 'cursor-pointer hover:bg-blue-50'
+        )}
+        onClick={() => {
+          if (currentPage === 1) return
+          onPageChange(currentPage - 1)
+        }}
+      >
+        <ChevronLeftIcon className="h-5 w-5" />
+      </li>
+      {paginationRange.map((pageNumber, key) => {
+        if (pageNumber === '...') {
+          return (
+            <li key={key} className="inline-flex items-center p-2">
+              &#8230;
+            </li>
+          )
+        }
+
+        return (
+          <li
+            className={classnames(
+              'inline-flex cursor-pointer select-none items-center px-3 py-2 hover:bg-blue-50',
+              {
+                'bg-blue-100': pageNumber === currentPage
+              }
+            )}
+            key={key}
+            onClick={() => {
+              if (pageNumber === currentPage) return
+              onPageChange(pageNumber)
+            }}
+          >
+            {pageNumber}
+          </li>
+        )
+      })}
+      <li
+        className={classnames(
+          'inline-flex select-none items-center p-2',
+          totalCount < currentPage * pageSize
+            ? 'cursor-not-allowed'
+            : 'cursor-pointer hover:bg-blue-50'
+        )}
+        onClick={() => {
+          if (totalCount < currentPage * pageSize) return
+          onPageChange(currentPage + 1)
+        }}
+      >
+        <ChevronRightIcon className="h-5 w-5" />
+      </li>
+    </ul>
+  )
+}
+
+export default Pagination
+```
+
+```tsx title="services/hooks/index.tsx"
+import { useMemo } from 'react'
+import { range } from 'services'
+
+export const usePagination = ({
+  totalCount,
+  pageSize,
+  siblingCount = 1,
+  currentPage
+}: IPagination) => {
+  const DOTS = '...'
+
+  const paginationRange = useMemo(() => {
+    const totalPageCount = Math.ceil(totalCount / pageSize)
+    const totalPageNumbers = siblingCount + 5
+
+    if (totalPageNumbers >= totalPageCount) {
+      return range(1, totalPageCount)
+    }
+
+    const leftSiblingIndex = Math.max(currentPage - siblingCount, 1)
+    const rightSiblingIndex = Math.min(
+      currentPage + siblingCount,
+      totalPageCount
+    )
+
+    const shouldShowLeftDots = leftSiblingIndex > 2
+    const shouldShowRightDots = rightSiblingIndex < totalPageCount - 2
+
+    const firstPageIndex = 1
+    const lastPageIndex = totalPageCount
+
+    if (!shouldShowLeftDots && shouldShowRightDots) {
+      let leftItemCount = 3 + 2 * siblingCount
+      let leftRange = range(1, leftItemCount)
+
+      return [...leftRange, DOTS, totalPageCount]
+    }
+
+    if (shouldShowLeftDots && !shouldShowRightDots) {
+      let rightItemCount = 3 + 2 * siblingCount
+      let rightRange = range(
+        totalPageCount - rightItemCount + 1,
+        totalPageCount
+      )
+      return [firstPageIndex, DOTS, ...rightRange]
+    }
+
+    if (shouldShowLeftDots && shouldShowRightDots) {
+      let middleRange = range(leftSiblingIndex, rightSiblingIndex)
+      return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex]
+    }
+  }, [totalCount, pageSize, siblingCount, currentPage])
+
+  return paginationRange
+}
+```
+
+```ts title="services/utils/index.ts"
+export const range = (start: any, end: any) => {
+  let length = end - start + 1
+  return Array.from({ length }, (_, idx) => idx + start)
+}
+```
+
+```ts title="types/index.d.ts"
+interface IPagination {
+  totalCount: number
+  pageSize: number
+  siblingCount: number
+  currentPage: number
+}
 ```
 
 ## Props
+
+| Name                     | Type                   | Default |
+| ------------------------ | ---------------------- | ------- |
+| currentPage<Required />  | number                 |         |
+| totalCount<Required />   | number                 |         |
+| pageSize<Required />     | number                 |         |
+| onPageChange<Required /> | (page: number) => void |         |
