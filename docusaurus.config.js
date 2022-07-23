@@ -27,8 +27,7 @@ const config = {
     {
       type: 'text/javascript',
       async: true,
-      src: 'https://cdn.kidow.me/plugin.js',
-      origin: 'https://plugin.kidow.me'
+      src: 'https://cdn.kidow.me/plugin.js'
     }
   ],
   presets: [
