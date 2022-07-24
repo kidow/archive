@@ -1,6 +1,9 @@
 한 컴포넌트에서 쓰는 State들을 하나의 hooks로 관리할 수 있도록 만든 hooks입니다.
 
 ```typescript title="services/hooks/index.tsx"
+import { useCallback, useEffect, useRef, useState } from 'react'
+import type { ChangeEvent } from 'react'
+
 export function useObjectState<T>(
   initialObject: T
 ): [
