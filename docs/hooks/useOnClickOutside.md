@@ -6,14 +6,14 @@ import type { RefObject } from 'react'
 export function useOnClickOutside<T extends HTMLElement>(
   ref: RefObject<T>,
   handler: (event: MouseEvent | TouchEvent) => void,
-  elementId?: string
+  id?: string
 ): void {
   const listener = (event: MouseEvent | TouchEvent) => {
     const el = ref?.current
     if (
       !el ||
       el.contains(event.target as Node) ||
-      elementId === (event.target as HTMLElement).id
+      id === (event.target as HTMLElement).id
     )
       return
     handler(event)
@@ -32,9 +32,9 @@ export function useOnClickOutside<T extends HTMLElement>(
 ### Dropdown
 
 ```tsx
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useId } from 'react'
 import type { FC } from 'react'
-import { useObjectState, useOnClickOutside, randomString } from 'services'
+import { useObjectState, useOnClickOutside } from 'services'
 import { createPortal } from 'react-dom'
 
 interface Props {
@@ -52,16 +52,16 @@ const Dropdown: FC<Props> = ({ label = 'Dropdown', list, onClick }) => {
   })
   const ref = useRef<HTMLButtonElement>(null)
   const targetRef = useRef<HTMLUListElement>(null)
-  const elementId = useMemo(() => randomString(), [])
+  const id = useId()
 
   // highlight-start
-  useOnClickOutside(targetRef, () => setState({ isOpen: false }), elementId)
+  useOnClickOutside(targetRef, () => setState({ isOpen: false }), id)
   // highlight-end
   return (
     <>
       <button
         onClick={() => setState({ isOpen: !isOpen })}
-        id={elementId}
+        id={id}
         ref={ref}
         className="inline-flex items-center rounded-md px-4 py-2 text-sm text-gray-700 after:ml-2 after:block after:h-1.5 after:w-1.5 after:rotate-45 after:border-b after:border-r after:border-gray-700 after:bg-transparent after:content-[''] hover:bg-gray-50"
       >

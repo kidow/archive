@@ -5,7 +5,6 @@ Storybook [link](https://components.kidow.me/?path=/story/feedback--toast)
 ## Prerequisite
 
 - [`EventListener`](/docs/utils/EventListener)
-- [`randomString`](/docs/utils/randomString)
 - [`useObjectState`](/docs/hooks/useObjectState)
 
 ```bash npm2yarn
@@ -122,10 +121,10 @@ export default Toast
 ### Toast.Container
 
 ```typescript
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useId } from 'react'
 import type { FC, ReactNode } from 'react'
 import { Toast } from 'components'
-import { EventListener, randomString, useObjectState } from 'services'
+import { EventListener, useObjectState } from 'services'
 
 export interface Props {
   position?:
@@ -155,7 +154,7 @@ const ToastContainer: FC<Props> = ({
           : [
               ...list,
               {
-                id: randomString(),
+                id: useId(),
                 message: detail.message,
                 type: detail.type,
                 position: detail.position || position,
