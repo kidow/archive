@@ -27,7 +27,7 @@ const config = {
     {
       type: 'text/javascript',
       async: true,
-      src: 'https://cdn.kidow.me/plugin.js',
+      src: 'https://beta.cdn.feedbank.app/plugin.js',
       'plugin-key': 'b4164b86-acd0-4f10-8171-906046cd71ab'
     }
   ],
