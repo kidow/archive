@@ -187,7 +187,7 @@ const config = {
 
         {
           name: 'google-site-verification',
-          content: 'U7XAUSLj4fvIltyYzYb9tzcOis4tnpM570JZSvSyrFg'
+          content: 'dpMF3-oHfMYFVkjgJpIJSGM_W_aL_gSFFnmWHM90NHU'
         },
         {
           name: 'naver-site-verification',
