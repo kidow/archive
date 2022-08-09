@@ -215,7 +215,12 @@ const config = {
         { name: 'twitter:image', content: image },
         { name: 'twitter:domain', content: url },
         { name: 'twitter:card', content: 'summary_large_image' }
-      ]
+      ],
+      algolia: {
+        appId: 'SOZUQMWDC4',
+        apiKey: 'a5d0a9e15439d60758cfac77349b97ec',
+        indexName: 'archive'
+      }
     })
 }
 
