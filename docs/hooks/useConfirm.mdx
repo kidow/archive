@@ -90,24 +90,18 @@ export default ConfirmModal
 ```tsx title="containers/Modal/index.tsx"
 ...
 import type { FC } from 'react'
+
 import ConfirmModal from './Confirm'
 
 interface Props {}
-// highlight-start
-interface IModal extends FC<Props> {
-  Confirm: typeof ConfirmModal
-}
-// highlight-end
 
-const Modal: IModal = () => {
+const Modal: FC<Props> = () => {
   return ...
 }
 
 // highlight-start
-Modal.Confirm = ConfirmModal
+export default Object.assign(Modal, { Confirm: ConfirmModal })
 // highlight-end
-
-export default Modal
 ```
 
 ### Next.js
