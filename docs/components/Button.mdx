@@ -24,6 +24,7 @@ export interface Props
   size?: 'xs' | 'sm' | 'md' | 'lg'
   theme?: 'danger' | 'primary' | 'success'
   shape?: 'text' | 'contained' | 'outlined'
+  icon?: any
 }
 
 const Button: FC<Props> = ({
@@ -34,8 +35,10 @@ const Button: FC<Props> = ({
   disabled,
   className,
   shape = 'contained',
+  icon,
   ...props
 }) => {
+  const Icon = loading ? Spinner : icon ? icon : null
   return (
     <button
       {...props}
@@ -44,7 +47,7 @@ const Button: FC<Props> = ({
         size === 'xs' ? 'gap-1.5 rounded py-px px-2 text-xs' : 'rounded-md',
         shape === 'outlined' ? 'group' : 'border-transparent',
         {
-          'inline-flex items-center justify-center': loading,
+          'inline-flex items-center justify-center': loading || icon,
           'hover:brightness-105 active:brightness-90': !loading && !disabled,
           'gap-2 py-1 px-3 text-sm': size === 'sm',
           'gap-3 py-2 px-4 text-base': size === 'md',
@@ -80,8 +83,8 @@ const Button: FC<Props> = ({
       )}
       disabled={loading || disabled}
     >
-      {loading && (
-        <Spinner
+      {Icon && (
+        <Icon
           className={classnames({
             'h-3 w-3': size === 'xs',
             'h-4 w-4': size === 'sm',
@@ -113,3 +116,4 @@ export default Button
 | isLoading | boolean                       | false       |
 | theme     | `primary` `success` `danger`  | `undefined` |
 | shape     | `text` `contained` `outlined` | `contained` |
+| icon      | JSX.Element                   |             |
