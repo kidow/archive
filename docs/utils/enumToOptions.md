@@ -2,7 +2,7 @@
 
 ```typescript title="services/utils/index.ts"
 export const enumToOptions = (enumObj: any) =>
-  Object.entries<string>(enumObj).map(([name, value]) => ({ value, name }))
+  Object.entries<string>(enumObj).map(([value, name]) => ({ value, name }))
 ```
 
 ## 예시
