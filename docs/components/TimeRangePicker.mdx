@@ -118,12 +118,11 @@ const TimeRangePicker: FC<Props> = ({
           <div
             role="presentation"
             style={{
-              left: `${ref.current?.getBoundingClientRect().left || 0}px`,
-              top: `${
+              left: ref.current?.getBoundingClientRect().left || 0,
+              top:
                 window.scrollY +
                 (ref.current?.getBoundingClientRect().top || 0) +
-                48
-              }px`,
+                (ref.current?.clientHeight || 0),
               position: 'absolute',
               zIndex: '9999'
             }}
