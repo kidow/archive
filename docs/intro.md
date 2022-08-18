@@ -12,6 +12,7 @@ sidebar_position: 1
 - **TailwindCSS**
 - **TypeScript**
 - classnames
+- @heroicons/react
 
 여기는 주로 코드만 열람할 수 있게 되어 있고, UI는 [이 곳](https://components.kidow.me)에도 따로 정리해 놓고 있습니다.
 
