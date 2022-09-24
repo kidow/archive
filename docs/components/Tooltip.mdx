@@ -140,11 +140,11 @@ const Tooltip: FC<Props> = ({
                 'px-5 py-2': padding,
                 'after:absolute after:z-10 after:border-8 after:content-[""]':
                   arrow,
-                'border border-gray-400': border,
+                'border border-neutral-400': border,
                 'before-content-[""] before:absolute before:border-[9px]':
                   arrow && border,
 
-                'bg-white text-gray-700': theme === 'light',
+                'bg-white text-neutral-700': theme === 'light',
                 'bg-black text-white': theme === 'dark',
 
                 'after:border-t-white':
@@ -196,19 +196,19 @@ const Tooltip: FC<Props> = ({
                   border &&
                   (position === 'left' || position === 'right'),
 
-                'before:border-b-gray-400':
+                'before:border-b-neutral-400':
                   arrow && border && theme === 'light' && position === 'bottom',
                 'before:border-b-black':
                   arrow && border && theme === 'dark' && position === 'bottom',
-                'before:border-t-gray-400':
+                'before:border-t-neutral-400':
                   arrow && border && theme === 'light' && position === 'top',
                 'before:border-t-black':
                   arrow && border && theme === 'dark' && position === 'top',
-                'before:border-l-gray-400':
+                'before:border-l-neutral-400':
                   arrow && border && theme === 'light' && position === 'left',
                 'before:border-l-black':
                   arrow && border && theme === 'dark' && position === 'left',
-                'before:border-r-gray-400':
+                'before:border-r-neutral-400':
                   arrow && border && theme === 'light' && position === 'right',
                 'before:border-r-black':
                   arrow && border && theme === 'dark' && position === 'right'

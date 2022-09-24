@@ -67,3 +67,15 @@ id: Code Snippets
   }
 }
 ```
+
+```json title="nextjs api"
+"nextjs api": {
+  "prefix": "nextapi",
+  "body": [
+    "import type { NextApiRequest, NextApiResponse } from 'next'",
+    "",
+    "export default function (req: NextApiRequest, res: NextApiResponse) {}"
+  ],
+  "description": "nextjs api"
+}
+```

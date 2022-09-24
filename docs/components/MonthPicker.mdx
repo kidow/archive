@@ -47,7 +47,7 @@ const MonthPicker: FC<Props> = ({ value, onChange }) => {
   return (
     <>
       <div
-        className="group relative inline-flex items-center rounded border border-gray-300 hover:border-gray-600"
+        className="group relative inline-flex items-center rounded border border-neutral-300 hover:border-neutral-600"
         ref={ref}
         id={id}
         onClick={() => setState({ isOpen: true })}
@@ -65,11 +65,11 @@ const MonthPicker: FC<Props> = ({ value, onChange }) => {
               onChange('')
               setState({ isOpen: false })
             }}
-            className="invisible absolute right-10 mr-2 h-5 w-5 cursor-pointer text-gray-300 group-hover:visible"
+            className="invisible absolute right-10 mr-2 h-5 w-5 cursor-pointer text-neutral-300 group-hover:visible"
           />
         )}
-        <button className="border-l border-gray-300 bg-white p-2 group-hover:border-gray-600">
-          <CalendarIcon className="h-5 w-5 text-gray-300 group-hover:text-gray-600" />
+        <button className="border-l border-neutral-300 bg-white p-2 group-hover:border-neutral-600">
+          <CalendarIcon className="h-5 w-5 text-neutral-300 group-hover:text-neutral-600" />
         </button>
       </div>
       {isOpen &&
@@ -90,14 +90,14 @@ const MonthPicker: FC<Props> = ({ value, onChange }) => {
               ref={targetRef}
               className="w-64 select-none rounded bg-white drop-shadow-xl"
             >
-              <div className="flex items-center justify-between border-b border-gray-300 px-2">
+              <div className="flex items-center justify-between border-b border-neutral-300 px-2">
                 <button
                   className="py-3"
                   onClick={() =>
                     setState({ date: dayjs(date).add(-1, 'year') })
                   }
                 >
-                  <ChevronLeftIcon className="h-4 w-4 text-gray-400 hover:text-gray-800" />
+                  <ChevronLeftIcon className="h-4 w-4 text-neutral-400 hover:text-neutral-800" />
                 </button>
                 <span className="font-semibold">
                   {dayjs(date).format('YYYY')}
@@ -106,7 +106,7 @@ const MonthPicker: FC<Props> = ({ value, onChange }) => {
                   className="py-3"
                   onClick={() => setState({ date: dayjs(date).add(1, 'year') })}
                 >
-                  <ChevronRightIcon className="h-4 w-4 text-gray-400 hover:text-gray-800" />
+                  <ChevronRightIcon className="h-4 w-4 text-neutral-400 hover:text-neutral-800" />
                 </button>
               </div>
               <div className="grid grid-cols-3 gap-4 px-2 py-4">
@@ -118,7 +118,7 @@ const MonthPicker: FC<Props> = ({ value, onChange }) => {
                       dayjs(value).format('YYYY-MM') ===
                         dayjs(date).format(`YYYY-${twoDigitsNumber(key + 1)}`)
                         ? 'bg-blue-500 text-white'
-                        : 'hover:bg-gray-200'
+                        : 'hover:bg-neutral-200'
                     )}
                     onClick={() => {
                       onChange(

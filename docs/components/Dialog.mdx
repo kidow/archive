@@ -73,7 +73,7 @@ const Dialog = forwardRef<HTMLDialogElement, Props>(
         }}
         {...props}
       >
-        <header className="border-t-4 border-gray-800">
+        <header className="border-t-4 border-neutral-800">
           {!!title && (
             <div
               className={classnames(
@@ -84,15 +84,15 @@ const Dialog = forwardRef<HTMLDialogElement, Props>(
               <div className="flex-1">
                 <h1 className="text-lg font-semibold">{title}</h1>
                 {!!description && (
-                  <p className="mt-1 text-sm text-gray-500">{description}</p>
+                  <p className="mt-1 text-sm text-neutral-500">{description}</p>
                 )}
               </div>
               <button
                 // @ts-ignore
                 onClick={() => ref.current?.close()}
-                className="rounded-full p-2 hover:bg-gray-300"
+                className="rounded-full p-2 hover:bg-neutral-300"
               >
-                <XMarkIcon className="h-5 w-5 text-gray-800" />
+                <XMarkIcon className="h-5 w-5 text-neutral-800" />
               </button>
             </div>
           )}

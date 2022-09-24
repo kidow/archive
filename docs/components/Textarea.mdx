@@ -58,10 +58,10 @@ const Textarea: FC<Props> = ({
         onKeyDown={onKeyDown}
         className={classnames(
           'rounded border bg-white p-2 read-only:cursor-default focus:outline-none disabled:cursor-not-allowed',
-          !!error ? 'border-red-500' : 'border-gray-300',
+          !!error ? 'border-red-500' : 'border-neutral-300',
           {
             'w-full': fullWidth,
-            'bg-gray-100': props.disabled,
+            'bg-neutral-100': props.disabled,
             'peer placeholder-transparent': !!placeholder && float
           }
         )}
@@ -72,7 +72,7 @@ const Textarea: FC<Props> = ({
         <label
           htmlFor={props.id || id}
           className={classnames(
-            'absolute -top-6 left-0 cursor-text select-none truncate text-sm text-gray-600 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-empty:left-3 peer-focus:left-0 peer-focus:-top-6 peer-focus:w-full peer-focus:cursor-default peer-focus:text-sm peer-focus:text-gray-600',
+            'absolute -top-6 left-0 cursor-text select-none truncate text-sm text-neutral-600 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-neutral-400 peer-empty:left-3 peer-focus:left-0 peer-focus:-top-6 peer-focus:w-full peer-focus:cursor-default peer-focus:text-sm peer-focus:text-neutral-600',
             !!props.value ? 'left-0' : 'left-3'
           )}
         >
@@ -83,7 +83,7 @@ const Textarea: FC<Props> = ({
         <p
           className={classnames(
             'mt-1 text-xs',
-            !!error ? 'text-red-500' : !!info ? 'text-gray-400' : undefined
+            !!error ? 'text-red-500' : !!info ? 'text-neutral-400' : undefined
           )}
         >
           {error || info}

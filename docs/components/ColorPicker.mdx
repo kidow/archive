@@ -87,8 +87,8 @@ const ColorPicker: FC<Props> = ({ value, onChange }) => {
       { hex: '#3b82f6', className: 'bg-blue-500' },
       { hex: '#6366f1', className: 'bg-indigo-500' },
       { hex: '#a855f7', className: 'bg-purple-500' },
-      { hex: '#6b7280', className: 'bg-gray-500' },
-      { hex: '#1f2937', className: 'bg-gray-800' }
+      { hex: '#6b7280', className: 'bg-neutral-500' },
+      { hex: '#1f2937', className: 'bg-neutral-800' }
     ],
     []
   )
@@ -104,7 +104,7 @@ const ColorPicker: FC<Props> = ({ value, onChange }) => {
         id={id}
         ref={buttonRef}
         onClick={() => setState({ isOpen: !isOpen })}
-        className="flex items-center gap-3 rounded border border-gray-300 p-2"
+        className="flex items-center gap-3 rounded border border-neutral-300 p-2"
       >
         <div className="h-6 w-6" style={{ backgroundColor: value }} />
         <div className="w-16 text-sm font-semibold text-slate-700">{value}</div>

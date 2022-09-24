@@ -7,7 +7,7 @@ Storybook [link](https://components.kidow.me/?path=/story/navigation--drawer)
 ```tsx title="components/Drawer/index.tsx"
 import type { FC } from 'react'
 import classnames from 'classnames'
-import { XIcon } from '@heroicons/react/24/outline'
+import { XMarkIcon } from '@heroicons/react/24/outline'
 import { createPortal } from 'react-dom'
 
 interface Props {
@@ -70,7 +70,7 @@ const Drawer: FC<Props> = ({ position, isOpen, onClose, children }) => {
             onClick={onClose}
             className="absolute right-4 top-4 inline-block sm:hidden"
           >
-            <XIcon className="h-5 w-5" />
+            <XMarkIcon className="h-5 w-5" />
           </button>
         </div>
       </div>

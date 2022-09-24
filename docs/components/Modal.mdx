@@ -11,46 +11,10 @@ npm install @heroicons/react classnames
 ## Code
 
 ```typescript title="types/index.d.ts"
-export interface IModal {
-  isOpen: boolean
-  onClose: () => void
-  title: string
-  maxWidth?:
-    | 'max-w-screen-2xl'
-    | 'max-w-screen-xl'
-    | 'max-w-screen-lg'
-    | 'max-w-screen-md'
-    | 'max-w-screen-sm'
-    | 'max-w-full'
-    | 'max-w-7xl'
-    | 'max-w-6xl'
-    | 'max-w-5xl'
-    | 'max-w-4xl'
-    | 'max-w-3xl'
-    | 'max-w-2xl'
-    | 'max-w-xl'
-    | 'max-w-lg'
-    | 'max-w-md'
-    | 'max-w-sm'
-    | 'max-w-xs'
-  description?: ReactNode
-  padding?: boolean
-}
-```
-
-```tsx title="components/Modal/index.tsx"
-import type { FC, ReactNode } from 'react'
-import { XIcon } from '@heroicons/react/24/solid'
-import classnames from 'classnames'
-import { createPortal } from 'react-dom'
-
-interface Props {
+export interface ModalProps {
   isOpen: boolean
   onClose: () => void
   title?: string
-  /**
-   * @default 'max-w-lg'
-   */
   maxWidth?:
     | 'max-w-screen-2xl'
     | 'max-w-screen-xl'
@@ -58,7 +22,6 @@ interface Props {
     | 'max-w-screen-md'
     | 'max-w-screen-sm'
     | 'max-w-full'
-    | 'max-w-8xl'
     | 'max-w-7xl'
     | 'max-w-6xl'
     | 'max-w-5xl'
@@ -74,6 +37,15 @@ interface Props {
   padding?: boolean
   footer?: ReactNode
 }
+```
+
+```tsx title="components/Modal/index.tsx"
+import type { FC, ReactNode } from 'react'
+import { XMarkIcon } from '@heroicons/react/24/solid'
+import classnames from 'classnames'
+import { createPortal } from 'react-dom'
+
+interface Props extends ReactProps, ModalProps {}
 interface State {}
 
 const Modal: FC<Props> = ({
@@ -112,25 +84,27 @@ const Modal: FC<Props> = ({
             maxWidth
           )}
         >
-          <header className="border-t-4 border-gray-800">
+          <header className="border-t-4 border-neutral-800">
             {!!title && (
               <div
                 className={classnames(
-                  'flex border-b border-gray-200 p-4',
+                  'flex border-b border-neutral-200 p-4',
                   !!description ? 'items-start' : 'items-center'
                 )}
               >
                 <div className="flex-1">
                   <h1 className="text-lg font-semibold">{title}</h1>
                   {!!description && (
-                    <p className="mt-1 text-sm text-gray-500">{description}</p>
+                    <p className="mt-1 text-sm text-neutral-500">
+                      {description}
+                    </p>
                   )}
                 </div>
                 <button
                   onClick={onClose}
-                  className="rounded-full p-2 hover:bg-gray-300"
+                  className="rounded-full p-2 hover:bg-neutral-200"
                 >
-                  <XIcon className="h-5 w-5 text-gray-800" />
+                  <XMarkIcon className="h-5 w-5 text-neutral-800" />
                 </button>
               </div>
             )}

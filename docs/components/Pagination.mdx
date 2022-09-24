@@ -41,14 +41,14 @@ const Pagination: FC<Props> = ({
 
   if (paginationRange.length < 2) {
     return (
-      <ul className="inline-flex divide-x divide-gray-300 rounded-md border border-gray-300 bg-white text-sm font-medium">
-        <li className="inline-flex cursor-not-allowed items-center p-2 text-gray-300">
+      <ul className="inline-flex divide-x divide-neutral-300 rounded-md border border-neutral-300 bg-white text-sm font-medium">
+        <li className="inline-flex cursor-not-allowed items-center p-2 text-neutral-300">
           <ChevronLeftIcon className="h-5 w-5" />
         </li>
         <li className="inline-flex cursor-pointer items-center bg-blue-50 px-3 py-2">
           1
         </li>
-        <li className="inline-flex cursor-not-allowed items-center p-2 text-gray-300">
+        <li className="inline-flex cursor-not-allowed items-center p-2 text-neutral-300">
           <ChevronRightIcon className="h-5 w-5" />
         </li>
       </ul>
@@ -56,7 +56,7 @@ const Pagination: FC<Props> = ({
   }
 
   return (
-    <ul className="inline-flex select-none divide-x divide-gray-300 rounded-md border border-gray-300 bg-white text-sm font-medium">
+    <ul className="inline-flex select-none divide-x divide-neutral-300 rounded-md border border-neutral-300 bg-white text-sm font-medium">
       <li
         className={classnames(
           'inline-flex select-none items-center p-2',

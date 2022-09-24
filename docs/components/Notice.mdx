@@ -34,7 +34,7 @@ const Notice: FC<Props> = ({ type, content, caption }) => {
         'rounded-l rounded-r-md border border-l-4 p-3',
         !!type
           ? 'flex items-center gap-2'
-          : 'border-gray-300 border-l-gray-500 bg-gray-50',
+          : 'border-neutral-300 border-l-neutral-500 bg-neutral-50',
         {
           'border-green-300 border-l-green-500 bg-green-50': type === 'success',
           'border-blue-300 border-l-blue-500 bg-blue-50': type === 'info',
@@ -56,12 +56,16 @@ const Notice: FC<Props> = ({ type, content, caption }) => {
         <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
       )}
       <div
-        className={classnames('text-sm', !!type ? 'flex-1' : 'text-gray-700', {
-          'text-green-700': type === 'success',
-          'text-blue-700': type === 'info',
-          'text-amber-700': type === 'warn',
-          'text-red-700': type === 'danger'
-        })}
+        className={classnames(
+          'text-sm',
+          !!type ? 'flex-1' : 'text-neutral-700',
+          {
+            'text-green-700': type === 'success',
+            'text-blue-700': type === 'info',
+            'text-amber-700': type === 'warn',
+            'text-red-700': type === 'danger'
+          }
+        )}
       >
         {content}
       </div>

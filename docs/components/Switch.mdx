@@ -28,7 +28,7 @@ const Switch: FC<Props> = ({ checked, onChange, size = 'md' }) => {
         onClick={() => onChange(!checked)}
         className={classnames(
           'absolute inset-0 cursor-pointer transition duration-300 before:absolute before:rounded-full before:bg-white before:transition before:duration-300 before:content-[""]',
-          checked ? 'bg-blue-600' : 'bg-gray-200',
+          checked ? 'bg-blue-600' : 'bg-neutral-200',
           {
             'rounded-lg before:left-1 before:bottom-1 before:h-2 before:w-2':
               size === 'sm',

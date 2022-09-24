@@ -22,7 +22,7 @@ html[data-theme='light'] #kidow-archive {
     @apply select-none text-red-500;
   }
   .react-table-row-group > div {
-    @apply table-row overflow-x-auto text-sm text-gray-500 hover:bg-blue-50;
+    @apply table-row overflow-x-auto text-sm text-neutral-500 hover:bg-blue-50;
   }
   .react-table-row-group > div > div {
     @apply table-cell px-6 py-4 align-top;

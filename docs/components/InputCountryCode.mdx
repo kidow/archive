@@ -68,14 +68,14 @@ const InputCountryCode: FC<Props> = ({ onCodeChange, ...props }) => {
               <button
                 id={id}
                 className={classnames({
-                  'h-4 w-4 rounded bg-gray-100': !flag
+                  'h-4 w-4 rounded bg-neutral-100': !flag
                 })}
                 onClick={() => setState({ isOpen: !isOpen })}
               >
                 {flag}
               </button>
               <ChevronDownIcon
-                className={classnames('h-4 w-4 text-gray-700 duration-150', {
+                className={classnames('h-4 w-4 text-neutral-700 duration-150', {
                   'rotate-180': isOpen
                 })}
               />
@@ -101,14 +101,14 @@ const InputCountryCode: FC<Props> = ({ onCodeChange, ...props }) => {
               .map((item, key) => (
                 <li
                   key={key}
-                  className="flex cursor-pointer gap-1.5 py-1.5 px-2.5 hover:bg-gray-100"
+                  className="flex cursor-pointer gap-1.5 py-1.5 px-2.5 hover:bg-neutral-100"
                   onClick={() => {
                     setState({ flag: item.flag })
                   }}
                 >
                   <span>{item.flag}</span>
                   <span className="text-slate-700">{item.name.common}</span>
-                  <span className="text-gray-400">
+                  <span className="text-neutral-400">
                     {item.idd.root +
                       (item.idd.suffixes.length === 1
                         ? item.idd.suffixes[0]

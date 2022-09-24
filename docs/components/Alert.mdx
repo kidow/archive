@@ -46,7 +46,7 @@ const Alert: FC<Props> = ({ type, message, close, children }) => {
         'bg-red-50': type === 'error',
         'bg-sky-50': type === 'success',
         'bg-orange-50': type === 'warn',
-        'bg-gray-50': type === 'info',
+        'bg-neutral-50': type === 'info',
         'transition-opacity duration-150': close,
         'opacity-100': close && !isClosed,
         'opacity-0': close && isClosed
@@ -58,7 +58,7 @@ const Alert: FC<Props> = ({ type, message, close, children }) => {
             'text-red-500': type === 'error',
             'text-sky-500': type === 'success',
             'text-orange-500': type === 'warn',
-            'text-gray-500': type === 'info'
+            'text-neutral-500': type === 'info'
           })}
         />
 
@@ -70,7 +70,7 @@ const Alert: FC<Props> = ({ type, message, close, children }) => {
       {close && !isClosed && (
         <XMarkIcon
           onClick={() => setState({ isClosed: true })}
-          className="h-5 w-5 cursor-pointer text-gray-700"
+          className="h-5 w-5 cursor-pointer text-neutral-700"
         />
       )}
     </div>

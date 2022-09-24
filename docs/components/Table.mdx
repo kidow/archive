@@ -28,7 +28,7 @@ npm install classnames
     @apply h-5 w-5 cursor-pointer align-middle disabled:cursor-not-allowed;
   }
   tbody tr {
-    @apply even:bg-gray-50 hover:bg-sky-50;
+    @apply even:bg-neutral-50 hover:bg-sky-50;
   }
 }
 ```
@@ -67,7 +67,7 @@ function Table<T>({
       )}
       <table
         className={classnames(
-          'tw-table w-full border-collapse whitespace-nowrap text-center text-xs text-gray-500',
+          'tw-table w-full border-collapse whitespace-nowrap text-center text-xs text-neutral-500',
           {
             'pointer-events-none cursor-not-allowed select-none opacity-60':
               loading,
@@ -78,7 +78,7 @@ function Table<T>({
           }
         )}
       >
-        <thead className="sticky top-0 bg-gray-100 tracking-wider">
+        <thead className="sticky top-0 bg-neutral-100 tracking-wider">
           {columns}
         </thead>
         <tbody>
