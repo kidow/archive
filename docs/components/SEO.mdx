@@ -13,19 +13,20 @@ interface Props {
   image?: string
   ldJson?: any
   noSEO?: boolean
-  keyword?: string
+  keywords?: string
 }
 
 const SEO: FC<Props> = ({
   title,
-  description = "It's my blog.",
+  description = '[Description]',
   image = '',
   ldJson,
-  noSEO = false
+  noSEO = false,
+  keywords
 }) => {
   const { asPath } = useRouter()
-  const TITLE = title ? `${title} - kidow` : 'kidow'
-  const URL = 'BASE_URL' + decodeURI(asPath)
+  const TITLE = title ? `${title} - [Title]` : '[Title]'
+  const URL = '[BASE_URL]' + decodeURI(asPath)
   if (ldJson) ldJson['@context'] = 'https://schema.org'
   if (noSEO)
     return (
@@ -37,7 +38,7 @@ const SEO: FC<Props> = ({
     <Head>
       <title>{TITLE}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content="keywords" />
+      {!!keywords && <meta name="keywords" content={keywords} />}
       <meta property="og:title" content={TITLE} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={URL} />

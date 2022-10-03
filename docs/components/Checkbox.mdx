@@ -35,7 +35,11 @@ const Checkbox: FC<Props> = ({
           'gap-1': !!label && size === 'sm',
           'gap-1.5': !!label && size === 'md',
           'gap-2': !!label && size === 'lg',
-          'gap-2.5': !!label && size === 'xl'
+          'gap-2.5': !!label && size === 'xl',
+          'h-4': size === 'sm',
+          'h-5': size === 'md',
+          'h-6': size === 'lg',
+          'h-7': size === 'xl'
         }
       )}
     >

@@ -20,7 +20,7 @@ id: tsconfig.json
     "jsx": "preserve",
     "baseUrl": "./src" // next.js는 "."
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", ".next"],
   "include": ["**/*.ts", "**/*.tsx", "**/*.js"]
 }
 ```

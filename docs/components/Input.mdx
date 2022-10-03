@@ -64,7 +64,7 @@ const Input: FC<Props> = ({
       <div
         className={classnames(
           isBaseWord
-            ? 'inline-flex items-center justify-between rounded border'
+            ? 'inline-flex items-center justify-between gap-1 rounded border'
             : 'inline-block',
           !!error && isBaseWord ? 'border-red-500' : 'border-neutral-300',
           {

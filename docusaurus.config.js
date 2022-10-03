@@ -25,10 +25,9 @@ const config = {
   ],
   scripts: [
     {
-      type: 'text/javascript',
-      async: true,
-      src: 'https://beta.cdn.feedbank.app/plugin.js',
-      'plugin-key': 'b4164b86-acd0-4f10-8171-906046cd71ab'
+      defer: true,
+      src: 'https://cdn.feedbank.app/plugin.js',
+      'plugin-key': 'fa46598f-aa5e-46fc-be63-2d3e339383c5'
     }
   ],
   presets: [
