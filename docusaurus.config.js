@@ -27,7 +27,9 @@ const config = {
     {
       defer: true,
       src: 'https://cdn.feedbank.app/plugin.js',
-      'plugin-key': 'fa46598f-aa5e-46fc-be63-2d3e339383c5'
+      'plugin-key': 'fa46598f-aa5e-46fc-be63-2d3e339383c5',
+      'data-fb-button-color': '#25C19F',
+      'data-fb-position': 'middle-right'
     }
   ],
   presets: [

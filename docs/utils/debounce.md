@@ -2,8 +2,8 @@
 
 ```typescript title="services/utils/index.ts"
 export function debounce(func: Function, wait: number) {
-  let timeout
-  return function (...args) {
+  let timeout: string | number | NodeJS.Timeout | undefined
+  return function (...args: any) {
     clearTimeout(timeout)
     timeout = setTimeout(() => {
       func.apply(this, args)
