@@ -151,7 +151,7 @@ const ToastContainer: FC<Props> = ({
           : [
               ...list,
               {
-                id: useId(),
+                id: Math.random().toString(36).slice(2),
                 message: detail.message,
                 type: detail.type,
                 position: detail.position || position,
