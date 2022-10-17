@@ -4,5 +4,5 @@
 
 ```typescript title="services/hooks/index.tsx"
 export const useBackdrop = () => (open: boolean) =>
-  EventListener.emit('backdrop', { detail: { open } })
+  EventListener.emit('backdrop', { open })
 ```
