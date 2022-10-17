@@ -15,7 +15,7 @@ npm install classnames @heroicons/react
 
 ### Toast
 
-```typescript
+```typescript title="containers/Toast/index.tsx"
 import type { FC } from 'react'
 import { EventListener } from 'services'
 import classnames from 'classnames'
@@ -117,7 +117,7 @@ export default Object.assign(Toast, {
 
 ### Toast.Container
 
-```typescript
+```typescript title="containers/Toast/Container/index.tsx"
 import { useCallback, useEffect, useId } from 'react'
 import type { FC, ReactNode } from 'react'
 import { Toast } from 'components'
@@ -196,7 +196,7 @@ export default ToastContainer
 
 ### Toast.Wrapper
 
-```typescript
+```typescript title="containers/Toast/Wrapper/index.tsx"
 import type { FC } from 'react'
 import classnames from 'classnames'
 import { createPortal } from 'react-dom'
@@ -237,7 +237,7 @@ export default ToastWrapper
 
 ### Toast.Progress
 
-```typescript
+```typescript title="containers/Toast/Progress/index.tsx"
 import { useEffect, useRef } from 'react'
 import type { FC } from 'react'
 import classnames from 'classnames'
@@ -473,6 +473,7 @@ namespace NToast {
 ## Usage
 
 ```typescript title="pages/_app.tsx"
+import { Toast } from 'containers'
 import { toast } from 'services'
 
 return (
