@@ -40,6 +40,7 @@ export interface ModalProps {
 ```
 
 ```tsx title="components/Modal/index.tsx"
+import { useEffect } from 'react'
 import type { FC, ReactNode } from 'react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import classnames from 'classnames'
@@ -59,6 +60,20 @@ const Modal: FC<Props> = ({
   footer
 }) => {
   if (!isOpen) return null
+
+  const onEscape = (e: KeyboardEvent) => {
+    if (e.code === 'Escape') {
+      onClose()
+      window.removeEventListener('keydown', onEscape)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('keydown', onEscape)
+    return () => {
+      window.removeEventListener('keydown', onEscape)
+    }
+  }, [])
   return createPortal(
     <div
       className="fixed inset-0 z-30 overflow-y-auto"
