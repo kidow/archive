@@ -164,6 +164,64 @@ const sidebars = {
         'tips/모바일에서 localhost 보는 법',
         'tips/사용중인 포트 종료하기'
       ]
+    },
+    {
+      type: 'category',
+      label: 'Bookmarks',
+      items: [
+        {
+          type: 'category',
+          label: 'Commons',
+          items: [
+            'bookmarks/common/patatap',
+            'bookmarks/common/typatone',
+            'bookmarks/common/rainymood',
+            'bookmarks/common/musicforprogramming'
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Designs',
+          items: [
+            {
+              type: 'category',
+              label: 'Images',
+              items: [
+                'bookmarks/design/image/artvee',
+                'bookmarks/design/image/behance',
+                'bookmarks/design/image/dribble',
+                'bookmarks/design/image/pravatar'
+              ]
+            },
+            'bookmarks/design/darkmodedesign',
+            'bookmarks/design/slides'
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Games',
+          items: ['bookmarks/game/8values']
+        },
+        {
+          type: 'category',
+          label: 'Services',
+          items: [
+            'bookmarks/service/maily',
+            'bookmarks/service/spacecloud',
+            'bookmarks/service/arcade'
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Tools',
+          items: [
+            'bookmarks/tool/spectacle',
+            'bookmarks/tool/telegraph',
+            'bookmarks/tool/reflect',
+            'bookmarks/tool/slid'
+          ]
+        }
+      ]
     }
   ]
 }
