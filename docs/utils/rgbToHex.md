@@ -1,3 +1,5 @@
+# rgbToHex
+
 ```typescript
 export const rgbToHex = (red: number, green: number, blue: number) => {
   return (

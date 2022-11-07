@@ -20,7 +20,7 @@ export default function Home(): JSX.Element {
           <div>
             <Link
               className="rounded bg-white px-6 py-3 text-lg font-semibold text-black"
-              to="/docs/intro"
+              to="/docs"
             >
               둘러보기
             </Link>

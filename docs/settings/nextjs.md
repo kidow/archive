@@ -1,6 +1,4 @@
----
-id: Next.js
----
+# Next.js
 
 ```tsx title="pages/_app.tsx"
 import 'styles/globals.css'

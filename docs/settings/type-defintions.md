@@ -1,6 +1,4 @@
----
-id: Type Definitions
----
+# Type Definitions
 
 ### process.env 에 추가된 변수에 타입을 지정할 때
 

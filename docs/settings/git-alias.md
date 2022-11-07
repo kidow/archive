@@ -1,6 +1,4 @@
----
-id: Git alias
----
+# Git alias
 
 ```bash
 git config --global alias.pod "push origin dev"

@@ -1,6 +1,4 @@
----
-id: tsconfig.json
----
+# tsconfig.json
 
 ```json
 {

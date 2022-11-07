@@ -1,6 +1,4 @@
----
-id: VSCode Extensions
----
+# VSCode Extensions
 
 ### [Auto Close Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag)
 

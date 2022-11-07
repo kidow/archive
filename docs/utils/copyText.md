@@ -1,3 +1,5 @@
+# copyText
+
 텍스트를 복사하는 함수입니다.
 
 ```typescript title="services/utils/index.ts"

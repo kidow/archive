@@ -1,6 +1,4 @@
----
-id: Prettier
----
+# Prettier
 
 ```json title=".prettierrc"
 {

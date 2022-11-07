@@ -1,3 +1,5 @@
+# hexToRgb
+
 ```typescript
 export const hexToRgb = (hex: string) => {
   hex = hex.replace(

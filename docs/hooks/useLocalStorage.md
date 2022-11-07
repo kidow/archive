@@ -1,3 +1,5 @@
+# useLocalStorage
+
 ```typescript
 type LocalStorageItems = 'item1' | 'item2'
 

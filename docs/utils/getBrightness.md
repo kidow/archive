@@ -1,3 +1,5 @@
+# getBrightness
+
 rgb color의 밝기 값을 구할 수 있습니다.
 
 ```typescript title="services/utils/index.ts"

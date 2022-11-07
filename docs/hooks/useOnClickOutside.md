@@ -1,3 +1,5 @@
+# useOnClickOutside
+
 지정한 영역의 바깥 영역을 클릭할 시 함수를 실행할 수 있도록 하는 hooks입니다.
 
 ```typescript title="services/hooks/index.tsx"

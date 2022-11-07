@@ -1,3 +1,9 @@
+---
+slug: /tips/모바일에서-localhost-보는-법
+---
+
+# 모바일에서 localhost 보는 법
+
 ```bash
 ipconfig getifaddr en0
 ```

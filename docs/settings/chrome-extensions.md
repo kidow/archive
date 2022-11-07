@@ -1,6 +1,4 @@
----
-id: Chrome Extensions
----
+# Chrome Extensions
 
 ## [Mate](https://chrome.google.com/webstore/detail/mate-translate-%E2%80%93-translat/ihmgiclibbndffejedjimfjmfoabpcke)
 

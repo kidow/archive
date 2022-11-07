@@ -1,6 +1,4 @@
----
-id: Code Snippets
----
+# Code Snippets
 
 ```json title="typescriptreact"
 {

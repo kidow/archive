@@ -1,6 +1,4 @@
----
-id: TailwindCSS
----
+# TailwindCSS
 
 ```css
 @tailwind base;

@@ -1,6 +1,4 @@
----
-id: EventListener
----
+# EventListener
 
 Web API 중 하나인 [CustomEvent](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)에 대한 함수입니다.
 

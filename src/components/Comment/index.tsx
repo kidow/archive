@@ -5,8 +5,8 @@ import { useColorMode } from '@docusaurus/theme-common'
 export interface Props {}
 
 const Comment: FC<Props> = () => {
-  const { isDarkTheme } = useColorMode()
-  const theme = isDarkTheme ? 'dark_dimmed' : 'light'
+  const { colorMode } = useColorMode()
+  const theme = colorMode === 'dark' ? 'dark_dimmed' : 'light'
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
