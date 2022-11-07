@@ -84,7 +84,7 @@ const config = {
             items: [
               {
                 label: 'Components',
-                to: '/docs/components/Alert'
+                to: '/docs/components/data-display/Avatar'
               },
               {
                 label: 'Hooks',
@@ -96,7 +96,11 @@ const config = {
               },
               {
                 label: 'Settings',
-                to: '/docs/settings/Chrome Extensions'
+                to: '/docs/settings/chrome-extensions'
+              },
+              {
+                label: 'Tips',
+                to: '/docs/tips/모바일에서-localhost-보는-법'
               }
             ]
           },
