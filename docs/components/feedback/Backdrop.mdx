@@ -21,8 +21,8 @@ const Backdrop: FC = () => {
 
   const onBackdrop = useCallback(
     ({ detail }: any) => {
-      setIsOpen(detail.open)
-      if (detail.open) document.body.style.overflow = 'hidden'
+      setIsOpen(detail)
+      if (detail) document.body.style.overflow = 'hidden'
       else document.body.removeAttribute('style')
     },
     [isOpen]

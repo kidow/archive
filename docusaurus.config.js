@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 const title = 'Archive - Kidow'
 const description = '웹 개발자 Kidow의 코드 보관소입니다.'
-const image = 'https://opengraph.kidow.me/api?id=tcxxhfzaa19'
+const image = 'https://og.kidow.me/api/image?id=tcxxhfzaa19'
 const url = 'https://archive.kidow.me'
 
 /** @type {import('@docusaurus/types').Config} */
@@ -90,18 +90,13 @@ const config = {
           {
             title: 'Projects',
             items: [
-              { label: 'Analytics', href: 'https://kidow.me' },
-              { label: 'Admin', href: 'https://admin.kidow.me' },
               { label: 'Archive', href: 'https://archive.kidow.me' },
-              { label: 'Blog', href: 'https://blog.kidow.me' },
               { label: 'Components', href: 'https://components.kidow.me' },
-              { label: 'Log', href: 'https://log.kidow.me' },
               { label: 'Memo', href: 'https://memo.kidow.me' },
-              { label: 'Menu', href: 'https://menu.kidow.me' },
-              { label: 'Opengraph', href: 'https://opengraph.kidow.me' },
-              { label: 'Portal', href: 'https://portal.kidow.me' },
+              { label: 'Opengraph', href: 'https://og.kidow.me' },
               { label: 'Resume', href: 'https://resume.kidow.me' },
-              { label: 'Status', href: 'https://status.kidow.me' }
+              { label: 'Coddee', href: 'https://coddee.dev' },
+              { label: 'Feedbank', href: 'https://feedbank.app' }
             ]
           },
           {

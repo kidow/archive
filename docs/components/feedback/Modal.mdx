@@ -11,7 +11,7 @@ npm install @heroicons/react classnames
 ## Code
 
 ```typescript title="types/index.d.ts"
-export interface ModalProps {
+interface ModalProps {
   isOpen: boolean
   onClose: () => void
   title?: string
@@ -40,8 +40,8 @@ export interface ModalProps {
 ```
 
 ```tsx title="components/Modal/index.tsx"
-import { useEffect } from 'react'
-import type { FC, ReactNode } from 'react'
+import { useCallback, useEffect } from 'react'
+import type { FC } from 'react'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 import classnames from 'classnames'
 import { createPortal } from 'react-dom'
@@ -59,23 +59,24 @@ const Modal: FC<Props> = ({
   padding = true,
   footer
 }) => {
-  if (!isOpen) return null
-
-  const onEscape = (e: KeyboardEvent) => {
+  const onEscape = useCallback((e: KeyboardEvent) => {
     if (e.code === 'Escape') {
       onClose()
       window.removeEventListener('keydown', onEscape)
     }
-  }
+  }, [])
 
   useEffect(() => {
+    if (!isOpen) return
     window.addEventListener('keydown', onEscape)
     return () => {
       window.removeEventListener('keydown', onEscape)
     }
-  }, [])
+  }, [isOpen])
+  if (!isOpen) return null
   return createPortal(
     <div
+      id="modal"
       className="fixed inset-0 z-30 overflow-y-auto"
       aria-labelledby="modal-title"
       aria-modal="true"
@@ -83,10 +84,10 @@ const Modal: FC<Props> = ({
     >
       <div className="flex min-h-screen items-center justify-center p-0 text-center md:block">
         <div
-          className="fixed inset-0 bg-black opacity-30 transition-opacity"
+          className="fixed inset-0 bg-black/30 transition-opacity"
           aria-hidden="true"
           onClick={onClose}
-        ></div>
+        />
         <span
           className="hidden h-screen align-middle md:inline-block"
           aria-hidden="true"
@@ -95,15 +96,19 @@ const Modal: FC<Props> = ({
         </span>
         <div
           className={classnames(
-            'my-8 inline-block w-full transform overflow-hidden rounded-lg bg-white text-left align-middle shadow-xl transition-all',
+            'my-8 inline-block w-full transform overflow-hidden rounded-lg bg-white text-left align-middle shadow-xl transition-all dark:bg-neutral-800',
             maxWidth
           )}
         >
-          <header className="border-t-4 border-neutral-800">
+          <header
+            className={classnames(
+              'border-t-4 border-neutral-800 dark:border-black'
+            )}
+          >
             {!!title && (
               <div
                 className={classnames(
-                  'flex border-b border-neutral-200 p-4',
+                  'flex border-b border-neutral-200 p-4 dark:border-neutral-700',
                   !!description ? 'items-start' : 'items-center'
                 )}
               >
@@ -117,21 +122,19 @@ const Modal: FC<Props> = ({
                 </div>
                 <button
                   onClick={onClose}
-                  className="rounded-full p-2 hover:bg-neutral-200"
+                  className="rounded-full p-2 hover:bg-neutral-200 dark:hover:bg-neutral-700"
                 >
-                  <XMarkIcon className="h-5 w-5 text-neutral-800" />
+                  <XMarkIcon className="h-5 w-5 text-neutral-800 dark:text-neutral-400" />
                 </button>
               </div>
             )}
           </header>
-          <div
-            className={classnames({
-              'py-6 px-7': padding
-            })}
-          >
-            {children}
-          </div>
-          {footer && <footer className="border-t py-4 px-7">{footer}</footer>}
+          <div className={classnames({ 'py-6 px-7': padding })}>{children}</div>
+          {footer && (
+            <footer className="border-t py-4 px-7 dark:border-neutral-700">
+              {footer}
+            </footer>
+          )}
         </div>
       </div>
     </div>,
