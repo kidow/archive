@@ -27,9 +27,17 @@ export default function Home(): JSX.Element {
           </div>
         </div>
       </main>
-      <div className="fixed top-5 left-0 z-[8500] flex w-full animate-fade-up justify-center text-white">
+      <div
+        className="fixed top-5 left-0 flex w-full animate-fade-up justify-center"
+        style={{ zIndex: 8500 }}
+      >
         <div className="animate-bounce rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 py-2 px-4">
-          <a href="https://kidow.me" target="_blank" className="font-semibold">
+          <a
+            href="https://kidow.me"
+            target="_blank"
+            className="font-semibold"
+            style={{ color: 'white' }}
+          >
             새 블로그로 이전하였습니다. 클릭 시 이동
           </a>
         </div>
