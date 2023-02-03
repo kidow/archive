@@ -33,8 +33,7 @@ export default function Home(): JSX.Element {
       >
         <div className="animate-bounce rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 py-2 px-4">
           <a
-            href="https://kidow.me"
-            target="_blank"
+            href="https://kidow.me/archive/intro"
             className="font-semibold"
             style={{ color: 'white' }}
           >
