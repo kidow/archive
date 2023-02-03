@@ -23,15 +23,6 @@ const config = {
     'docusaurus-tailwindcss',
     [require.resolve('docusaurus-gtm-plugin'), { id: 'GTM-TFHQLMX' }]
   ],
-  scripts: [
-    {
-      defer: true,
-      src: 'https://cdn.feedbank.app/plugin.js',
-      'plugin-key': 'dc6bec91-f0ec-412a-9841-141e67023cbe',
-      type: 'text/javascript',
-      async: true
-    }
-  ],
   presets: [
     [
       'classic',
